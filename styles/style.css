@@ -1,0 +1,150 @@
+:root {
+    --var-color-red: hsl(0, 78%, 62%);
+    --var-color-cyan: hsl(180, 62%, 55%);
+    --var-color-orange: hsl(34, 97%, 64%);
+    --var-color-blue: hsl(212, 86%, 64%);
+
+    --var-color-dark-blue: hsl(234, 12%, 34%);
+    --var-color-dark-blue-shadow: hsla(234, 12%, 34%, 0.25);
+    --var-color-grayish-blue: hsl(229, 6%, 66%);
+    --var-color-light-gray: hsl(0, 0%, 98%);
+    --var-color-white: hsl(0, 0%, 100%);
+}
+
+html {}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    margin: 1% 10%;
+
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.9375rem;
+
+    color: var(--var-color-grayish-blue, hsl(229, 6%, 66%));
+    background-color: var(--var-color-light-gray, hsl(0, 0%, 98%));
+
+    &>header {
+        width: max(45%, 20rem);
+
+        /* padding: 0 28%; */
+
+        text-align: center;
+
+        &>p {
+            margin: 0;
+            line-height: 1.5rem;
+        }
+    }
+
+    &>footer {
+        justify-self: flex-end;
+
+        & .attribution {
+            text-align: center;
+
+            font-size: 0.6875rem;
+        }
+
+        & .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    }
+}
+
+h1,
+h2 {
+    margin: 0;
+
+    font-size: 2rem;
+}
+
+h2,
+h3 {
+    font-weight: 600;
+    color: var(--var-color-dark-blue, hsl(234, 12%, 34%));
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+
+    font-weight: 400;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template: repeat(4, 1fr) / repeat(3, 1fr);
+    grid-template-areas:
+        ".... team-builder ...."
+        "supervisor team-builder calculator"
+        "supervisor karma calculator"
+        ".... karma ....";
+
+    margin-top: 4rem;
+}
+
+.card {
+    border-radius: 0.3rem;
+    box-shadow: var(--var-color-dark-blue-shadow, hsla(234, 12%, 34%, 0.25)) 0rem 0.1875rem 0.5rem;
+
+    padding: 1rem 2rem 2rem 2rem;
+
+    background-color: var(--var-color-white, hsl(0, 0%, 100%));
+
+    &>p {
+        margin: 0;
+        padding-bottom: 1rem;
+    }
+
+    &>footer {
+        display: block;
+        text-align: right;
+    }
+}
+
+.supervisor {
+    grid-area: supervisor;
+
+    border-top: 0.2rem solid var(--var-color-cyan, hsl(180, 62%, 55%));
+}
+
+.team-builder {
+    grid-area: team-builder;
+
+    border-top: 0.2rem solid var(--var-color-red, hsl(0, 78%, 62%));
+}
+
+.karma {
+    grid-area: karma;
+
+    border-top: 0.2rem solid var(--var-color-orange, hsl(34, 97%, 64%));
+}
+
+.calculator {
+    grid-area: calculator;
+
+    border-top: 0.2rem solid var(--var-color-blue, hsl(212, 86%, 64%));
+}
+
+@media screen and (max-width: 48rem) {
+    .grid-wrapper {
+        grid-template: repeat(4, 1fr)/ 1fr;
+        grid-template-areas: 
+            "team-builder"
+            "supervisor"
+            "calculator"
+            "karma";
+    }
+}
